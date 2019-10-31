@@ -1,0 +1,5 @@
+valgrind --tool=helgrind  --track-lockorders=no ./array
+valgrind --leak-check=full --show-leak-kinds=all ./array
+valgrind --tool=drd   ./array
+make -f makefile
+

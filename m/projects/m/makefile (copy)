@@ -1,0 +1,21 @@
+CXX  = g++
+CXXFLAGS = --std=c++11
+LIBS = /usr/lib/libgtest.a /usr/lib/libgtest_main.a -lpthread -lboost_program_options
+all: test
+
+test: m.o test.o
+	g++ m.o test.o
+
+m.o: m.cpp
+	g++ -c m.cpp
+
+test.o: test.cpp
+	g++ -c test.cpp
+
+clean: 
+	rm -rf *.o test
+#g++ -o test test.cpp m.cpp -g -lgtest -pthread -std=c++11
+#g++ -o test test.cpp m.cpp -g -lgtest -pthread -std=c++11
+#valgrind --leak-check=full --show-leak-kinds=all ./test
+#valgrind --tool=drd ./test
+#valgrind --tool=helgrind ./test
